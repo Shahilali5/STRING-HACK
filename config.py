@@ -3,9 +3,11 @@ from pyrogram import filters
 import os
 
 class Config:
-    API_ID = "29727048"
-    API_HASH = "38d104adbd94c66a349714abd7977d80"
-    TOKEN = "7378446791:AAEXhP9KzrPNHZkN0gIgqklw7Vm3CFebgOU"
-    MONGO_URL = "mongodb+srv://Chatgpt:Chatgpt%40123@chatgpt.56l90.mongodb.net/?retryWrites=true&w=majority&appName=Chatgpt"
-    START_PIC = "https://envs.sh/aKf.mp4"
-    SUDOERS = filters.user(["8129810243", "6409133123"])
+    API_ID = os.environ.get("API_ID") or input("Enter your API_ID: ")
+    API_HASH = os.environ.get("API_HASH") or input("Enter your API_HASH: ")
+    TOKEN = os.environ.get("TOKEN") or input("Enter your Bot TOKEN: ")
+    MONGO_URL = os.environ.get("MONGO_URL") or input("Enter your MongoDB URL: ")
+    START_PIC = os.environ.get("START_PIC") or input("Enter your Start Pic URL: ")
+    
+    sudo_ids = os.environ.get("SUDOERS") or input("Enter your Admin IDs (comma-separated): ")
+    SUDOERS = filters.user(sudo_ids.split(","))
